@@ -1,5 +1,5 @@
 # Study
-AI 플랫폼을 활용한 데이터 분석
+KDT > [멀티잇]데이터 시각화&분석 취업캠프(Python)
   - python
   - SQL
   - HTML / CSS / Javascript
