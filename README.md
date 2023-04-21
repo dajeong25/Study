@@ -9,4 +9,10 @@ KDT > [멀티잇]데이터 시각화&분석 취업캠프(Python)
   - Java
   - Python
   - SQL
-  - studying....
+
+빅데이터분석기사
+  - 데이터 전처리
+  - 모델링
+  - 시각화&결과해석
+  
+studying....
