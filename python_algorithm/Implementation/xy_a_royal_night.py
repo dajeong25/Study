@@ -14,7 +14,7 @@ xy = input()
 
 # x의 알파벳을 수작업으로 지정 후 변환
 x_list = ['a','b','c','d','e','f','g','h']
-now = list(map(int, [x_list.index(xy[0]), xy[1]]))
+now = list(map(int, [x_list.index(xy[0])+1, xy[1]]))
 
 # 교재: ord로 유니코드 변경하여 변환 good!
 # now = [int(ord(xy[0]))-int(ord('a'))+1, int(xy[1])]
