@@ -4,17 +4,16 @@ import sys
 input = sys.stdin.readline
 
 N = int(input())
-s = input()
+s = input().rstrip()
 answer = ''
-string = ''
-num = 0
 for i in range(1,N+1, 2):
 	string = s[i-1]
 	num = int(s[i])
-	idx = ord(string) - ord('a') + 1
-	if (idx+(num**2)) > 26:
-		answer += chr((idx+(num**2))%26-1 + 97)
-	else:
-		answer += chr(ord(string)+num**2)
+	answer += chr( (ord(string) - ord('a') + num**2) % 26 + ord('a') )
 
 print(answer)
+
+# if문으로 나누면서 예상치못한 케이스들이 생겨서 fail
+# if/else로 나눈 것을 한번에 계산하면 오히려 문제가 안 생김.
+
+# !!먼저 if문을 하기 보단 계산해서 한번에 계산할 생각하기!!
