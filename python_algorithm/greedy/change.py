@@ -11,3 +11,13 @@ for coin in coins:
 	charge = charge % coin
 
 print(n)
+
+'''
+coding test Tip
+: 동전 교환 외의 그리티 알고리즘 해당 유형
+: 상황이 명확하기 때문에 해결하기 쉬운 편
+
+1. 회의실 배정 문제
+2. Fractional Knapsack, 분할 가능한 배낭채우기
+3. 다익스트라, 프림, 크루스칼 등의 비용을 최적하는 그래프 이론
+'''
