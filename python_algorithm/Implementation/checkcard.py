@@ -1,5 +1,6 @@
 # 출처 : 멀티잇 코딩테스트 러닝클래스'Python 5월반
 # 기초 자료구조의 구현과 응용 - 체크카드
+# 문제를 잘 읽어서 조건을 잘 파악하는 것이 핵심
 
 # deposit : 계좌 입금
 # pay 결제 - deposit보다 금액 크면 결제 안됨
@@ -15,26 +16,24 @@ for _ in range(M):
 	w, num = input().split()
 	num = int(num)
 
-	while True:
-		if len(wait) > 0 and N >= wait[0]:
-			N -= wait.popleft()
-		else:
-			break
-	
 	if w == 'deposit':
 		N += num
+
+        # 굳이 두번 할 필요 없이, 계좌에 돈이 들어오면 대기열 바로 확인
+        while True:
+            if len(wait) > 0 and N >= wait[0]:
+                N -= wait.popleft()
+            else:
+                break
+            
 	elif w == 'pay':
 		if N >= num:
 			N -= num
+   
 	else:
 		if len(wait)==0 and N >= num:
 			 N -= num
 		else:
 			wait.append(num)
 
-while True:
-	if len(wait) > 0 and N >= wait[0]:
-		N -= wait.popleft()
-	else:
-		break
 print(N)
