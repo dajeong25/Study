@@ -10,6 +10,7 @@ N개의 막대기 중 일부 사용해서,
 - 2차시도
     : 홀수가 문제이기 때문에 개수를 세고 몫만 추가하는 것으로 했지만 런타임 에러...
     : deque로 추가하고 pop으로 빼는 것 자체가 시간 초과..
+- 3차시도 : pop이랑 if문을 빼고 순서를 그대로 했는데도 시간 초과..ㅠ
 '''
 import sys
 from collections import deque
@@ -17,14 +18,11 @@ input = sys.stdin.readline
 
 N = int(input().rstrip())
 S = list(map(int, input().split()))
-S.sort() #쌍으로 만들어야함
 
-area = 0
-co = deque()
+co = []
 if N <= 1:
 	print(0)
 else:
-	# print(S) #3//2 = 1
 	cnt = [0 for _ in range(10**6)]
 	for s in S:
 		cnt[s] += 1
@@ -35,20 +33,32 @@ else:
 				co.append(i)
 	# print(1, co)
 	
-	if len(co) % 2 == 0:
-		for i in range(len(co)//2):
-			a = co.pop()
-			b = co.pop()
-			area += a*b
-		print(area)
-	else:
-		if len(co) == 1:
-			print(co[0]**2)
-		else:
-			co.popleft()
-			for i in range(len(co)//2):
-				a = co.pop()
-				b = co.pop()
-				area += a*b
-				# print(co)
-			print(area)
+	co.sort(reverse=True)
+	area = 0
+	for i in range(1, len(co), 2):
+		area += co[i-1] * co[i]
+	print(area)
+
+
+#해설
+import sys
+input = sys.stdin.readline
+
+N = int(input())
+pair = []
+cnt = [0 for _ in range(1000001)]
+sticks = map(int, input().split())
+for stick in sticks:
+    cnt[stick] += 1
+
+for length in range(1, 1000001):
+    while cnt[length] > 1:
+        cnt[length] -= 2
+        pair.append(length)
+
+pair.sort(reverse=True)
+ans = 0
+for i in range(1, len(pair), 2):
+    ans += pair[i - 1] * pair[i]
+
+print(ans)
