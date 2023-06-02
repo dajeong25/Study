@@ -2,6 +2,7 @@
 # 그래프 탐색 - 물체 탐색 (사후)
 # 1차시도 - 3개 통과되고 실패.
 # 2차시도 - max 값이 무한히 늘어나는 코드를 수정했지만 대다수 에러
+# 3차시도 - 멘토님께 여쭤봄 > 변수 설정의 에러였다..
 import sys
 from collections import deque
 input = sys.stdin.readline
@@ -23,13 +24,13 @@ for y in range(M):
 			cnt += 1
 			temp = 0
 			s = deque()
-			s.append((y,x))
+			s.append((y,x)) #여기의 y,x
 			while s:
-				y, x = s.popleft()
+				sy, sx = s.popleft() #여기의 y,x가 동일하기 때문에 에러났음
 				temp += 1
 				for i in range(4):
-					ny = dy[i] + y
-					nx = dx[i] + x
+					ny = dy[i] + sy
+					nx = dx[i] + sx
 					if ny<0 or ny>=M or nx<0 or nx>=N or p[ny][nx] == '.' or visited[ny][nx] == 1:
 						continue
 					s.append((ny,nx))
@@ -38,7 +39,7 @@ for y in range(M):
 
 print(cnt)
 print(max_size)
-#아무리 봐도 어디가 에러인지 모르겠다!! 근데 해설을 그대로 붙여넣어도 timeout이 나서 실패하는데...?????
+
 
 #해설
 import sys
