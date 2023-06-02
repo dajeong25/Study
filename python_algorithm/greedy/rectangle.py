@@ -11,23 +11,26 @@ N개의 막대기 중 일부 사용해서,
     : 홀수가 문제이기 때문에 개수를 세고 몫만 추가하는 것으로 했지만 런타임 에러...
     : deque로 추가하고 pop으로 빼는 것 자체가 시간 초과..
 - 3차시도 : pop이랑 if문을 빼고 순서를 그대로 했는데도 시간 초과..ㅠ
+- 4차시도
+    : 소소하게 불필요한 부분 덜어냈는데 통과됨..wow..
+    : 리스트로 담을 필요가 없으면 하지 않고, 체크하는 리스트의 경우 +1이 핵심인 듯
 '''
 import sys
 from collections import deque
 input = sys.stdin.readline
 
 N = int(input().rstrip())
-S = list(map(int, input().split()))
+S = map(int, input().split()) #아래에서 어차피 하나씩 빼니까 굳이 list담을 필요없음
 
 co = []
 if N <= 1:
 	print(0)
 else:
-	cnt = [0 for _ in range(10**6)]
+	cnt = [0 for _ in range(10**6+1)] #확인할때는 +1을 해야 되는듯?
 	for s in S:
 		cnt[s] += 1
 		
-	for i in range(10**6):
+	for i in range(10**6+1): #여기서도
 		if cnt[i] > 1:
 			for _ in range(cnt[i]//2):
 				co.append(i)
@@ -38,7 +41,7 @@ else:
 	for i in range(1, len(co), 2):
 		area += co[i-1] * co[i]
 	print(area)
-
+ 	
 
 #해설
 import sys
