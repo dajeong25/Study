@@ -48,9 +48,9 @@ from sklearn.ensemble import RandomForestClassifier
 model = RandomForestClassifier(n_estimators=100, max_depth=10, random_state=1)
 model.fit(X_train, y_train['gender'])
 rf_score = model.score(X_train, y_train['gender'])
-pred = model.predict_proba(X_val)
-print(rf_score) #0.865
+pred = model.predict_proba(X_test)
+# print(rf_score) #0.865
 
 # 답안 제출 참고
 # 아래 코드 예측변수와 수험번호를 개인별로 변경하여 활용
-pd.DataFrame({'cust_id': test_id, 'gender': pred}).to_csv('006000000.csv', index=False)
+pd.DataFrame({'cust_id': list(test_id), 'gender': pred[:, 1]}).to_csv('006000000.csv', index=False)
