@@ -24,7 +24,7 @@ df70['f1'] = df70.f1.fillna(df70.f1.median())
 after = df70.f1.std()
 # print('결측치 처리 전 표준편차 :', before)
 # print('결측치 처리 후 표준편차 :', after)
-print('두 표준편차 차이 :', before - after)
+print(before - after) # '두 표준편차 차이 :',  같은 불필요한 단어들 감점요인
 
 ## 3번
 std = df.age.std()
