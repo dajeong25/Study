@@ -50,7 +50,7 @@ print(round(s, 3))
 # 3-2-2
 # p = round(p,3)
 print(p)
-if p > 0.5 :
+if p >= 0.5 :
     print('채택') #귀무가설 기준
 else:
     print('기각')
