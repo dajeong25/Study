@@ -1,0 +1,21 @@
+{% extends "base1.html" %}
+{% block title %}main{% endblock %}
+{% block content %}
+
+{# if request.session.login : 로그인된 경우 request.session['login']=id #}
+{% if request.session.login %}
+    <div>
+        <h3>{{request.session.login}}로 로그인 되었습니다.</h3>
+        <h3><a href="../logout">로그아웃</a></h3>
+        <h3><a href="../info/{{request.session.login}}/">회원정보보기</a></h3>
+        {% if request.session.login == 'admin' %} {# 관리자 로그인 #}
+            <h3><a href="../list/">회원목록조회</a></h3>
+        {% endif %}
+    </div>
+{% else %} {# 로그아웃상태 #}
+    <script>
+        location.href="../login/"
+    </script>
+{% endif %}
+
+{% endblock %}
