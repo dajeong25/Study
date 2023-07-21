@@ -11,4 +11,7 @@ urlpatterns = [
     path('info/<str:id>/', views.info),   # http://localhost:8000/member/info/{{request.session.login}}/
     path('list/', views.list),   # http://127.0.0.1:8000/member/list/
     path('picture/', views.picture), #http://127.0.0.1:8000/member/picture/
+    path('update/<str:id>/', views.update),   # http://localhost:8000/member/update/{{request.session.login}}/
+    path('delete/<str:id>/', views.delete),
+    path('password/', views.password),
 ]

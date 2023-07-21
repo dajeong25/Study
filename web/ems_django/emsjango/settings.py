@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
 
     "member",
+    "board",
 ]
 
 MIDDLEWARE = [
@@ -47,7 +48,7 @@ TEMPLATES = [
         "DIRS": [BASE_DIR/'templates'],
         "APP_DIRS": True,
         "OPTIONS": {
-            
+
         },
     },
 ]
@@ -60,17 +61,25 @@ WSGI_APPLICATION = ""
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "emsdb",
+        "USER" : "ems",
+        "PASSWORD" : "1234",
+        "HOST" : "localhost",
+        "PORT" : "3306",
     }
 }
+# 1. 이걸 쓰려면 마리아db를 쓸 수 있도록 설치 pip install mysqlclient 
+# 2. anaconda prompt 창 
+#       : BASE_DIR >> python manage.py migrate 
+#       : 아무것도 없는 db에 테이블 생김
 
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-    
+
 ]
 
 
@@ -94,7 +103,7 @@ STATIC_URL = "/static/"  # css, js 파일 위치
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = ""
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 import os
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]

@@ -4,7 +4,7 @@
         : 파일이름 + 파일데이터 함께 서버로 전송
         : 반드시 method="post" / get방식은 url에 붙어서 감
 -->
-<form action="../picture" method="post" enctype="multipart/form-data">
+<form action="../picture/" method="post" enctype="multipart/form-data">
 {% csrf_token %}
 <table>
 <!-- MIME : text/html, img/jpeg, ... :: 문서의 형식 포시를 위한 표준 방식 -->

@@ -1,0 +1,12 @@
+<script type="text/javascript">
+// opener : 현재 윈도우를 생성한 다른 윈도우 == join.html
+// img : join.html의 이미지태그를 선택
+// <.... id="pic" ... > id가 pic인 태그를 가져와
+    img = opener.document.getElementById("pic");
+    img.src = "/file/picture/{{fname}}"; //opener에 이미지 출력
+// <form ... name="f"> 
+//    < ... name="picture" .. value=""> 
+// </form> : 이름이 f인 태그 아래의 picture이름의 태그의 value를 가져와
+    opener.document.f.picture.value = "{{fname}}"; //opener의 hidden값
+    self.close(); // 현재 페이지 닫기
+</script>

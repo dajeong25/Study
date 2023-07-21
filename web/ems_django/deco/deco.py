@@ -29,3 +29,14 @@ def adminChk(func):
                 return render(request, "alert.html", context)
         return func(request)
     return check
+
+
+def loginchk(func):
+    def check(request):
+        try:
+            login = request.session["login"]
+        except:
+            context = {'msg':"로그인하세요", "url":"../login"}
+            return render(request, "alert.html", context)
+        return func(request)
+    return check
