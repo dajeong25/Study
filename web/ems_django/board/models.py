@@ -10,7 +10,7 @@ class Board(models.Model):
     pw = models.CharField(max_length=20)
     title = models.CharField(max_length=200)
     content = models.CharField(max_length=2000)
-    regdate = models.DateField(null=True)
+    regdate = models.DateTimeField(null=True)
     readcnt = models.IntegerField(default=0)
     file1 = models.CharField(max_length=300)
     
