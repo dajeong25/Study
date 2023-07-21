@@ -1,0 +1,42 @@
+# -*- coding: utf-8 -*-
+###### Django 설치하기 ######
+"""
+1. anaconda prompt 실행
+   - pip install Django => 장고 설치
+   - python -m django --version => 장고버전 확인
+   - 장고 소스를 저장을 위한 폴더 생성 : D:\20230717\django
+     cd D:\20230717\django => 현재 폴더 변경
+     d: => 드라이브가 다른 경우만
+   - 장고 프로젝트 생성(startproject) > django-admin startproject emsjango =>프로젝트 폴더
+   - 현재 폴더를 프로젝트 폴더로 이동
+      cd emsjango
+   - application 생성
+     python manage.py startapp member
+2. 파일 탐색기 실행
+   - templates 폴성 생성
+3. spyder 폴더를 프로젝트 폴더로 변경
+4. emsjango settings.py 파일 수정
+    - INSTALLED_APPS = [,'member'] : member 인식하도록 설정
+    - TEMPLATES = {"DIRS": [BASE_DIR/'templates'],} : 각각의 애플리케이션에 따로 만들어 줘야하는 것을 통합함
+    - LANGUAGE_CODE = "ko-kr"
+      TIME_ZONE = "Asia/Seoul"
+5. anaconda prompt 실행
+    ** 프로젝트 폴더에서 실행해야 함
+    - python manage.py migrate : 관련 데이터베이스 설정
+    - python manage.py runserver : 장고서버 실행. port:8000
+"""
+
+
+##### 게시판 생성 #####
+"""
+1. D:\emspy\python_web\emsjango>python manage.py startapp board
+    앱 신규 추가 생성
+2. settins > INSTALLED_APPS > "board" 추가
+3. board/models.py >> class 생성
+4. python manage.py makemigrations
+5. python manage.py migrate
+6. emsjango/urls.py >> board 추가 >> board/urls.py 생성
+7. board/models.py Board 클래스 생성
+8. board/views.py 함수 생성
+"""
+
