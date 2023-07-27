@@ -1,6 +1,6 @@
 # Study
 **KDT > 데이터 시각화&분석 취업캠프(Python) 1회차**
-  - python(np/pd/mlp/sns/자연어 / ML/DL)
+  - python(np/pd/mlp/sns/자연어 / ML/DL / 알고리즘)
   - SQL(Oracle)
   - HTML / CSS / Javascript
   - Django
