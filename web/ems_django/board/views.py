@@ -59,26 +59,29 @@ def update(request, num):
         board = Board.objects.get(num=num)
         return render(request, 'board/update.html',{'b': board})
     else :
+        # 비밀번호 검증
         board = Board.objects.get(num=num)
-        pw = request.POST["pw"]
+        pw = request.POST["pw"] #입력된 비밀번호
         if board.pw != pw :
             context = {"msg":"비밀번호 오류","url":"../../update/"+str(num) + "/"}
             return render(request,"alert.html",context)
+        #비밀번호 동일
         try :
-            filename = request.FILES["file1"].name
+            filename = request.FILES["file1"].name #업로드된 파일 이름
             handle_upload(request.FILES["file1"])
         except :
-            filename = ""
+            filename = "" 
+        # filename 결정
         try :
             if filename == "" :
-               filename = request.POST["file2"]
+               filename = request.POST["file2"] #수정전 업로드파일의 이름 설정
             b=Board(num=num,\
                     name=request.POST["name"],\
                     pw=request.POST["pw"],\
                     title=request.POST["title"],\
                     content=request.POST["content"],\
                     file1=filename)   
-            b.save()
+            b.save() #수정
             return HttpResponseRedirect("../../list/")
         except Exception as e :
             print(traceback.format_exc()) #runserver 콘솔창에 오류 메세지 출력
@@ -91,6 +94,7 @@ def delete (request, num):
     if request.method != 'POST':
         return render(request, 'board/delete.html',{"num":num})
     else :
+        # 비밀번호 검증
        b=Board.objects.get(num=num)
        pw = request.POST["pw"]
        if pw != b.pw :
