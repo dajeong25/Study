@@ -23,6 +23,9 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("member/", include("member.urls")),
     path("board/", include("board.urls")),
+    path("", include("weather.urls")),
+    path("dress/", include("dress.urls")),
+    path("ajax/", include("ajax.urls")),
 ]
 
 
