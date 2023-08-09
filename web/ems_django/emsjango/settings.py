@@ -34,6 +34,9 @@ INSTALLED_APPS = [
 
     "member",
     "board",
+    "weather",
+    "dress",
+    "ajax",
 ]
 
 MIDDLEWARE = [
