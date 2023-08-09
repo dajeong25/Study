@@ -1,0 +1,55 @@
+{% extends 'base1.html' %}
+{% block title %}의상선택{% endblock title %}
+{% block content %}
+<table>
+    <tr><td>
+        <img id="preview" src="{{img}}" width="150">
+    </td></tr>
+    <tr><td>
+        <div style="font-size: large; color:blue;" id="result">
+            {{result}}
+        </div>
+    </td></tr>
+    <tr><td>
+        <form method="post" enctype="multipart/form-data"> 
+        {% csrf_token %}
+        <!-- "multipart/form-data" : 액션이 없으면 나를 한번더 띄움 == get 방식-->
+            <input type="file" name="dress" id="imageFile" accept="img/*">
+            <input type="submit" value="확인">
+        </form>
+    </td></tr>
+</table>
+<script type="text/javascript">
+/* 
+- id 속성 : 유일한 특징을 가진 태그를 사용하는 속성 #속성값 id='속성값'
+- class : 태그들의 특징을 그룹화하는 속성          .속성값 class='속성값'
+
+- getElementById('imageFile') : 태그 중 id="imageFile" 태그 선택 (구버전)
+    == .querySelector("#imageFile") : 의미는 둘 다 동일 (신버전)
+- imageFile : input type="file"... 태그
+- preview : img 태그 */
+
+    let imagefile = document.querySelector("#imageFile");
+    let preview = document.querySelector("#preview");
+    
+/* addEventListenerfile : 태그에서 change 이벤트 발생 시 함수 호출 */
+
+    imagefile.addEventListener('change', function(e){  
+// div, span, h1, ... 태그의 하위 내용에 html을 추가하는 속성
+        let result = document.querySelector('#result');
+        result.innerHTML = '';
+        
+// e : 이벤트 객체 >> on~~ 이벤트 함수
+// e.target : 이벤트가 발생한 태그
+        let get_file = e.target.files;  //선택된 파일
+        let reader = new FileReader();  //입력 stream (일방통행)
+        reader.onload = (function (Img){
+            return function(e) {
+                Img.src = e.target.result;
+                Img.width = 150;
+            }
+        }) (preview);
+        if (get_file){ reader.readAsDataURL(get_file[0]); }
+    });
+</script>
+{% endblock content %}

@@ -1,0 +1,6 @@
+1. python manage.py startapp weather
+2. settings => 등록
+3. 장고 & weather urls 등록
+4. weather/weather.py  추가 
+5. models 추가
+6. views 추가
