@@ -60,17 +60,31 @@ def select(request):
         
         if sido_select == None and gu_select == None:
             sido = sido_df.iloc[:, 0]
-            select = sido.sort()
+            select = sido
         elif (sido_select != None) and (gu_select == None):
             gu = sido_df.loc[(sido_df.sido==sido_select), "gu"]
-            select = gu.sort()
+            select = gu
         elif (sido_select != None) and (gu_select != None):
             dong = sido_df.loc[(sido_df.gu==gu_select), "dong"]
-            select = dong.sort()
+            select = dong
         else: pass
-            
-        return JsonResponse({'sido':select.unique().tolist()})
+        
+        select = sorted(select.unique())
+        return JsonResponse({'sido':select})
         
     except:
         pass
 
+# basedir = str(Path.cwd())
+# # basedir #'D:\\emspy\\python_web\\emsjango'
+# url = basedir+'/file/ajax/sido.txt'
+
+# sido_df = pd.read_csv(url, sep='\t', names=['sido','gu','dong'])
+
+# sido_df.dropna(inplace=True)
+# gudong = sido_df[sido_df.dong == sido_df.gu].index
+# sido_df = sido_df.drop(gudong)
+# sido = sido_df.iloc[:, 0]
+# select = sido
+# select = sorted(select.unique())
+# select
