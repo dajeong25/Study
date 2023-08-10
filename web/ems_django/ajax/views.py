@@ -74,17 +74,3 @@ def select(request):
         
     except:
         pass
-
-# basedir = str(Path.cwd())
-# # basedir #'D:\\emspy\\python_web\\emsjango'
-# url = basedir+'/file/ajax/sido.txt'
-
-# sido_df = pd.read_csv(url, sep='\t', names=['sido','gu','dong'])
-
-# sido_df.dropna(inplace=True)
-# gudong = sido_df[sido_df.dong == sido_df.gu].index
-# sido_df = sido_df.drop(gudong)
-# sido = sido_df.iloc[:, 0]
-# select = sido
-# select = sorted(select.unique())
-# select
